@@ -15,7 +15,7 @@ cppcheck --enable=warning,performance \
     "${TEST_DIR}/../search.c" || test_end 1
 
 # Make sure there are no compiler warnings
-cc -Wall -Werror "${TEST_DIR}"/../search.c || test_end 1
+cc -Wall -Werror "${TEST_DIR}"/../search.c -o /dev/null || test_end 1
 
 # Finally, if README.md is not filled out (still has TODOs), this test fails.
 grep 'TODO' "${TEST_DIR}/../README.md" && test_end 1
