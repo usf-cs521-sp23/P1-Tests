@@ -4,7 +4,7 @@ run_timeout=10
 
 reference_output=$(cd "${TEST_DIR}/inputs/test-fs"; find . -mindepth 1 -name 'pool' | sort)
 
-test_start "Checks the output against the full test directory"
+test_start "Tries to run the program with a variety of incorrect options"
 
 
 # Invalid directory -- if the directory passed in doesn't exist, return 1

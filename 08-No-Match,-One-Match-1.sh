@@ -6,9 +6,6 @@ reference_output=$(cd "${TEST_DIR}/inputs/test-fs"; find . -mindepth 1 -name 'lo
 
 test_start "Performs a search with no matches, and one with a single match."
 
-# Note that here we don't specify the search directory, so the program should
-# default to the CWD (.)
-
 program_output=$(\
     cd "${TEST_DIR}/inputs/test-fs"; \
     ${TEST_DIR}/../search -e . pool\
