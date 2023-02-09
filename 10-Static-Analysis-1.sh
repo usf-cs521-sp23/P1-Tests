@@ -9,10 +9,15 @@ if ! ( which cppcheck &> /dev/null ); then
     test_end 1
 fi
 
+# Use cppcheck to check for code issues
 cppcheck --enable=warning,performance \
     --error-exitcode=1 \
     "${TEST_DIR}/../search.c" || test_end 1
 
+# Make sure there are no compiler warnings
 cc -Wall -Werror "${TEST_DIR}"/../search.c || test_end 1
+
+# Finally, if README.md is not filled out (still has TODOs), this test fails.
+grep 'TODO' "${TEST_DIR}/../README.md" && test_end 1
 
 test_end
