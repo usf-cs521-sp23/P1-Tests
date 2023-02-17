@@ -20,4 +20,4 @@ cc -Wall -Werror "${TEST_DIR}"/../search.c -o /dev/null || test_end 1
 # Finally, if README.md is not filled out (still has TODOs), this test fails.
 grep 'TODO' "${TEST_DIR}/../README.md" && test_end 1
 
-test_end
+test_end 0
