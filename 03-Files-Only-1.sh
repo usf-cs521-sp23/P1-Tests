@@ -6,10 +6,9 @@ reference_output=$(cd "${TEST_DIR}/inputs/test-fs"; find ./tiny -mindepth 1 -typ
 
 test_start "Repeats the previous test, but only shows files."
 
-program_output=$(\
-    cd "${TEST_DIR}/inputs/test-fs"; \
-    ${TEST_DIR}/../search ./tiny -f \
-    | sort)
+cd "${TEST_DIR}/inputs/test-fs"
+run "${TEST_DIR}/../search" ./tiny -f
+program_output=$(sort <<< "${program_output}")
 
 compare_outputs
 

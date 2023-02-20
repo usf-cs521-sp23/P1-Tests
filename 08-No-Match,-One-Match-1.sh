@@ -6,17 +6,13 @@ reference_output=$(cd "${TEST_DIR}/inputs/test-fs"; find . -mindepth 1 -name 'lo
 
 test_start "Performs a search with no matches, and one with a single match."
 
-program_output=$(\
-    cd "${TEST_DIR}/inputs/test-fs"; \
-    ${TEST_DIR}/../search -e . pool\
-    | sort)
+cd "${TEST_DIR}/inputs/test-fs"
+run "${TEST_DIR}/../search" -e . pool
 
 compare <(echo "") <(echo "${program_output}") || test_end 1
 
-program_output=$(\
-    cd "${TEST_DIR}/inputs/test-fs"; \
-    ${TEST_DIR}/../search -e . loop-control \
-    | sort)
+run "${TEST_DIR}/../search" -e . loop-control
+program_output=$(sort <<< "${program_output}")
 
 compare_outputs
 

@@ -8,10 +8,9 @@ test_start "Checks output against the tiny test directory"
 
 # See tests/inputs/test-fs for test directories
 
-program_output=$(\
-    cd "${TEST_DIR}/inputs/test-fs"; \
-    ${TEST_DIR}/../search ./tiny \
-    | sort)
+cd "${TEST_DIR}/inputs/test-fs"
+run "${TEST_DIR}/../search" ./tiny
+program_output=$(sort <<< "${program_output}")
 
 compare_outputs
 

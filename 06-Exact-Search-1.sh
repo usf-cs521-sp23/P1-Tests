@@ -6,10 +6,9 @@ reference_output=$(cd "${TEST_DIR}/inputs/test-fs"; find -mindepth 1 -not -name 
 
 test_start "Searches for an EXACT string across the full test directory"
 
-program_output=$(\
-    cd "${TEST_DIR}/inputs/test-fs"; \
-    ${TEST_DIR}/../search -e . zsh \
-    | sort)
+cd "${TEST_DIR}/inputs/test-fs"
+run "${TEST_DIR}/../search" -e . zsh
+program_output=$(sort <<< "${program_output}")
 
 compare_outputs
 

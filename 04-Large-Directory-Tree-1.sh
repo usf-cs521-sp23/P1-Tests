@@ -9,10 +9,9 @@ test_start "Checks the output against the full test directory"
 # Note that here we don't specify the search directory, so the program should
 # default to the CWD (.)
 
-program_output=$(\
-    cd "${TEST_DIR}/inputs/test-fs"; \
-    ${TEST_DIR}/../search \
-    | sort)
+cd "${TEST_DIR}/inputs/test-fs"
+run "${TEST_DIR}/../search"
+program_output=$(sort <<< "${program_output}")
 
 compare_outputs
 

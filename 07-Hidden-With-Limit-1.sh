@@ -6,10 +6,9 @@ reference_output=$(cd "${TEST_DIR}/inputs/test-fs"; find -mindepth 1 -maxdepth 4
 
 test_start "Searches for files (including hidden) with a traversal limit of 4."
 
-program_output=$(\
-    cd "${TEST_DIR}/inputs/test-fs"; \
-    ${TEST_DIR}/../search -l 4 -h -f . uuid \
-    | sort)
+cd "${TEST_DIR}/inputs/test-fs"
+run "${TEST_DIR}/../search" -l 4 -h -f . uuid
+program_output=$(sort <<< "${program_output}")
 
 compare_outputs
 
